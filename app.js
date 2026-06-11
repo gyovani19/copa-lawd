@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentUser = '';
     let inventory = {}; // { id: count }
     let lastOpenedPackTime = null; // timestamp
+    let claimedCheckpoints = [];
     let activeTab = 'album';
     let currentRevealCards = []; // temporarily holds cards being revealed
     let flippedCount = 0;
@@ -193,6 +194,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const savedTime = localStorage.getItem(`copa-lawd-last-pack:${username}`);
         lastOpenedPackTime = savedTime ? parseInt(savedTime, 10) : null;
 
+        // Load claimed checkpoints
+        const savedClaimed = localStorage.getItem(`copa-lawd-claimed:${username}`);
+        if (savedClaimed) {
+            claimedCheckpoints = JSON.parse(savedClaimed);
+        } else {
+            claimedCheckpoints = [];
+            if (lastOpenedPackTime) {
+                // Legacy compatibility migration
+                const lastDate = new Date(lastOpenedPackTime);
+                const dateStr = formatDateString(lastDate);
+                const hour = lastDate.getHours();
+                if (hour >= 19) {
+                    claimedCheckpoints.push(`${dateStr}-12`);
+                    claimedCheckpoints.push(`${dateStr}-19`);
+                } else if (hour >= 12) {
+                    claimedCheckpoints.push(`${dateStr}-12`);
+                }
+                localStorage.setItem(`copa-lawd-claimed:${username}`, JSON.stringify(claimedCheckpoints));
+            }
+        }
+
         // Setup display
         userNameDisplay.textContent = username;
         
@@ -212,8 +234,9 @@ document.addEventListener('DOMContentLoaded', () => {
         updatePackStatus();
 
         // Default to packs tab if today's pack is available
-        const { lastRelease } = getDailyReleaseThresholds();
-        const isPackAvailable = !lastOpenedPackTime || (lastOpenedPackTime < lastRelease.getTime());
+        const activeCheckpoints = getReleaseCheckpoints();
+        const unclaimed = activeCheckpoints.filter(cp => !claimedCheckpoints.includes(cp.id));
+        const isPackAvailable = unclaimed.length > 0;
         if (isPackAvailable) {
             switchTab('packs');
         } else {
@@ -547,43 +570,63 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Daily Pack Locking Logic
-    function getDailyReleaseThresholds() {
+    function formatDateString(date) {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, '0');
+        const d = String(date.getDate()).padStart(2, '0');
+        return `${y}-${m}-${d}`;
+    }
+
+    function getReleaseCheckpoints() {
         const now = new Date();
+        const checkpoints = [];
         
-        // Current day's 12:00:00 threshold
-        const today12 = new Date();
+        const today12 = new Date(now);
         today12.setHours(12, 0, 0, 0);
+        const today19 = new Date(now);
+        today19.setHours(19, 0, 0, 0);
         
-        let lastRelease = null;
-        let nextRelease = null;
+        const todayStr = formatDateString(now);
         
         if (now.getTime() >= today12.getTime()) {
-            // 12:00 has already passed today
-            lastRelease = today12;
-            
-            // Next release is tomorrow at 12:00
-            nextRelease = new Date(today12.getTime() + 24 * 60 * 60 * 1000);
-        } else {
-            // It is before 12:00 today
-            // Last release was yesterday at 12:00
-            lastRelease = new Date(today12.getTime() - 24 * 60 * 60 * 1000);
-            nextRelease = today12;
+            checkpoints.push({ id: `${todayStr}-12`, time: today12 });
+        }
+        if (now.getTime() >= today19.getTime()) {
+            checkpoints.push({ id: `${todayStr}-19`, time: today19 });
         }
         
-        return { lastRelease, nextRelease };
+        return checkpoints;
+    }
+
+    function getNextReleaseTime() {
+        const now = new Date();
+        const today12 = new Date(now);
+        today12.setHours(12, 0, 0, 0);
+        const today19 = new Date(now);
+        today19.setHours(19, 0, 0, 0);
+        
+        if (now.getTime() < today12.getTime()) {
+            return today12;
+        } else if (now.getTime() < today19.getTime()) {
+            return today19;
+        } else {
+            const tomorrow12 = new Date(today12.getTime() + 24 * 60 * 60 * 1000);
+            return tomorrow12;
+        }
     }
 
     function updatePackStatus() {
         if (!currentUser) return;
         
-        const { lastRelease, nextRelease } = getDailyReleaseThresholds();
+        const activeCheckpoints = getReleaseCheckpoints();
+        const unclaimed = activeCheckpoints.filter(cp => !claimedCheckpoints.includes(cp.id));
+        const isPackAvailable = unclaimed.length > 0;
+        const nextRelease = getNextReleaseTime();
         const now = new Date();
         
-        // If user hasn't claimed a pack OR the last claimed pack was before the lastRelease threshold
-        const isPackAvailable = !lastOpenedPackTime || (lastOpenedPackTime < lastRelease.getTime());
-        
         if (isPackAvailable) {
-            packStatusText.textContent = 'Liberado!';
+            const countStr = unclaimed.length > 1 ? ` (${unclaimed.length} disponíveis)` : '';
+            packStatusText.textContent = `Liberado!${countStr}`;
             packStatusText.className = 'pack-status-indicator';
             countdownTimer.textContent = 'Pacote Pronto!';
             
@@ -594,7 +637,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 swipeTextLabel.textContent = 'DESLIZE PARA ABRIR ➡️';
             }
             boosterPack.classList.remove('waiting-lock');
-            document.getElementById('pack-timer-desc').textContent = 'Você tem um pacote disponível para abrir hoje!';
+            document.getElementById('pack-timer-desc').textContent = unclaimed.length > 1
+                ? 'Você tem 2 pacotes disponíveis para abrir hoje (12h e 19h)!'
+                : 'Você tem um pacote disponível para abrir hoje!';
         } else {
             packStatusText.textContent = 'Próximo pacote em:';
             packStatusText.className = 'pack-status-indicator waiting';
@@ -616,18 +661,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 swipeTextLabel.textContent = 'BLOQUEADO 🔒';
             }
             boosterPack.classList.add('waiting-lock');
-            document.getElementById('pack-timer-desc').textContent = `Liberado todo dia às 12:00h. Próximo pacote: ${nextRelease.toLocaleDateString()} às 12:00`;
+            
+            const releaseHour = nextRelease.getHours();
+            const dateLabel = nextRelease.getDate() === now.getDate() ? 'hoje' : 'amanhã';
+            document.getElementById('pack-timer-desc').textContent = `Liberado às 12:00h e 19:00h. Próximo pacote: ${dateLabel} às ${releaseHour}:00h.`;
         }
     }
 
     // Trigger Pack Opening Sequence
     function triggerPackOpening() {
-        const { lastRelease } = getDailyReleaseThresholds();
-        const isPackAvailable = !lastOpenedPackTime || (lastOpenedPackTime < lastRelease.getTime());
+        const activeCheckpoints = getReleaseCheckpoints();
+        const unclaimed = activeCheckpoints.filter(cp => !claimedCheckpoints.includes(cp.id));
+        const isPackAvailable = unclaimed.length > 0;
         
         // Extra check
         if (!isPackAvailable) {
-            alert('Você já abriu seu pacote diário de hoje! Aguarde o próximo às 12h.');
+            alert('Você já abriu seus pacotes disponíveis! Aguarde o próximo às 12h ou 19h.');
             return;
         }
         
@@ -757,6 +806,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Save pack items to inventory
     function saveRevealedCardsToInventory() {
+        // Find the first active checkpoint that is unclaimed, and claim it
+        const activeCheckpoints = getReleaseCheckpoints();
+        const unclaimed = activeCheckpoints.filter(cp => !claimedCheckpoints.includes(cp.id));
+        if (unclaimed.length > 0) {
+            const checkpointToClaim = unclaimed[0].id;
+            claimedCheckpoints.push(checkpointToClaim);
+            localStorage.setItem(`copa-lawd-claimed:${currentUser}`, JSON.stringify(claimedCheckpoints));
+        }
+
         // Record last opened timestamp
         lastOpenedPackTime = Date.now();
         localStorage.setItem(`copa-lawd-last-pack:${currentUser}`, lastOpenedPackTime.toString());
@@ -836,6 +894,7 @@ document.addEventListener('DOMContentLoaded', () => {
             username: currentUser,
             inventory: inventory,
             lastOpenedPackTime: lastOpenedPackTime,
+            claimedCheckpoints: claimedCheckpoints,
             exportedAt: new Date().toISOString()
         }, null, 2);
         
@@ -866,6 +925,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentUser = data.username;
                     inventory = data.inventory;
                     lastOpenedPackTime = data.lastOpenedPackTime || null;
+                    claimedCheckpoints = data.claimedCheckpoints || [];
                     
                     localStorage.setItem('copa-lawd-username', currentUser);
                     localStorage.setItem(`copa-lawd-inventory:${currentUser}`, JSON.stringify(inventory));
@@ -874,6 +934,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         localStorage.removeItem(`copa-lawd-last-pack:${currentUser}`);
                     }
+                    localStorage.setItem(`copa-lawd-claimed:${currentUser}`, JSON.stringify(claimedCheckpoints));
                     
                     // Reload screen
                     loginUser(currentUser);
