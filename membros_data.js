@@ -725,6 +725,22 @@ const MEMBROS = [
   {
     "id": 36,
     "category": "evento",
+    "name": "Fusao Vice Presida",
+    "fullName": "Fusao Vice Presida",
+    "email": "",
+    "phone": "",
+    "birthday": "",
+    "status": "Evento",
+    "techs": [],
+    "areasOfActivity": "",
+    "interests": "",
+    "projects": "",
+    "image": "Eventos/fusao-vice-presida.jpeg",
+    "isRectangular": true
+  },
+  {
+    "id": 37,
+    "category": "evento",
     "name": "LAWD 2 Anos",
     "fullName": "LAWD 2 Anos",
     "email": "",
@@ -739,7 +755,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 37,
+    "id": 38,
     "category": "evento",
     "name": "LAWD Campus Party",
     "fullName": "LAWD Campus Party",
@@ -755,7 +771,23 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 38,
+    "id": 39,
+    "category": "evento",
+    "name": "LAWD Hackaia",
+    "fullName": "LAWD Hackaia",
+    "email": "",
+    "phone": "",
+    "birthday": "",
+    "status": "Evento",
+    "techs": [],
+    "areasOfActivity": "",
+    "interests": "",
+    "projects": "",
+    "image": "Eventos/lawd-hackaia.jpeg",
+    "isRectangular": true
+  },
+  {
+    "id": 40,
     "category": "evento",
     "name": "LAWD Semac X",
     "fullName": "LAWD Semac X",
@@ -771,7 +803,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 39,
+    "id": 41,
     "category": "evento",
     "name": "LAWD Semac XI",
     "fullName": "LAWD Semac XI",
@@ -787,7 +819,55 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 40,
+    "id": 42,
+    "category": "evento",
+    "name": "Niver Ano 1",
+    "fullName": "Niver Ano 1",
+    "email": "",
+    "phone": "",
+    "birthday": "",
+    "status": "Evento",
+    "techs": [],
+    "areasOfActivity": "",
+    "interests": "",
+    "projects": "",
+    "image": "Eventos/niver-ano-1.jpeg",
+    "isRectangular": true
+  },
+  {
+    "id": 43,
+    "category": "evento",
+    "name": "Primeira Reuniao Geral",
+    "fullName": "Primeira Reuniao Geral",
+    "email": "",
+    "phone": "",
+    "birthday": "",
+    "status": "Evento",
+    "techs": [],
+    "areasOfActivity": "",
+    "interests": "",
+    "projects": "",
+    "image": "Eventos/primeira-reuniao-geral.jpeg",
+    "isRectangular": true
+  },
+  {
+    "id": 44,
+    "category": "evento",
+    "name": "Root Para LAWD",
+    "fullName": "Root Para LAWD",
+    "email": "",
+    "phone": "",
+    "birthday": "",
+    "status": "Evento",
+    "techs": [],
+    "areasOfActivity": "",
+    "interests": "",
+    "projects": "",
+    "image": "Eventos/root-para-lawd.jpeg",
+    "isRectangular": true
+  },
+  {
+    "id": 45,
     "category": "evento",
     "name": "Sim Grade 1.0",
     "fullName": "Sim Grade 1.0",
@@ -803,7 +883,71 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 41,
+    "id": 46,
+    "category": "lugar",
+    "name": "Confra Espetinho Do Ze",
+    "fullName": "Confra Espetinho Do Ze",
+    "email": "",
+    "phone": "",
+    "birthday": "",
+    "status": "Lugar",
+    "techs": [],
+    "areasOfActivity": "",
+    "interests": "",
+    "projects": "",
+    "image": "Lugares/confra-espetinho-do-ze.jpeg",
+    "isRectangular": true
+  },
+  {
+    "id": 47,
+    "category": "lugar",
+    "name": "Jardim Novos Membros",
+    "fullName": "Jardim Novos Membros",
+    "email": "",
+    "phone": "",
+    "birthday": "",
+    "status": "Lugar",
+    "techs": [],
+    "areasOfActivity": "",
+    "interests": "",
+    "projects": "",
+    "image": "Lugares/jardim-novos-membros.jpeg",
+    "isRectangular": true
+  },
+  {
+    "id": 48,
+    "category": "lugar",
+    "name": "LAWD CCET Fundacao",
+    "fullName": "LAWD CCET Fundacao",
+    "email": "",
+    "phone": "",
+    "birthday": "",
+    "status": "Lugar",
+    "techs": [],
+    "areasOfActivity": "",
+    "interests": "",
+    "projects": "",
+    "image": "Lugares/lawd-ccet-fundacao.jpeg",
+    "isRectangular": true
+  },
+  {
+    "id": 49,
+    "category": "lugar",
+    "name": "LAWD Floyd",
+    "fullName": "LAWD Floyd",
+    "email": "",
+    "phone": "",
+    "birthday": "",
+    "status": "Lugar",
+    "techs": [],
+    "areasOfActivity": "",
+    "interests": "",
+    "projects": "",
+    "image": "Lugares/lawd-floyd.jpeg",
+    "isRectangular": true
+  },
+  {
+    "id": 50,
     "category": "lugar",
     "name": "LAWD MPSE",
     "fullName": "LAWD MPSE",
@@ -819,7 +963,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 42,
+    "id": 51,
     "category": "lugar",
     "name": "LAWD Sti",
     "fullName": "LAWD Sti",
@@ -835,7 +979,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 43,
+    "id": 52,
     "category": "lugar",
     "name": "LAWD UFS BR",
     "fullName": "LAWD UFS BR",
@@ -851,7 +995,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 44,
+    "id": 53,
     "category": "lugar",
     "name": "Sala CCET",
     "fullName": "Sala CCET",
@@ -867,7 +1011,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 45,
+    "id": 54,
     "category": "lugar",
     "name": "Web Lab",
     "fullName": "Web Lab",
