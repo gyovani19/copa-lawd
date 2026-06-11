@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa LAWD - Álbum de Figurinhas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- BACKGROUND GLOWS -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- PROFILE SETUP MODAL -->
+    <div id="profile-modal" class="modal-overlay active">
+        <div class="modal-content profile-setup-card">
+            <div class="logo-container">
+                <img src="assets/logo-text-white.png" class="login-logo-img" alt="LAWD Logo">
+                <p class="subtitle" style="margin-top: 15px;">Álbum de Figurinhas Oficial - Copa LAWD</p>
+            </div>
+            
+            <form id="profile-form">
+                <div class="input-group">
+                    <label for="user-name">Digite seus dois primeiros nomes</label>
+                    <input type="text" id="user-name" required placeholder="Ex: Gyovani Santos" autocomplete="off">
+                    <span class="input-helper">Usado para salvar seu progresso no álbum localmente</span>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span>Começar Coleção</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAIN APP WRAPPER (HIDDEN UNTIL LOGIN) -->
+    <div id="app-wrapper" class="hidden">
+        <!-- HEADER -->
+        <header class="app-header">
+            <div class="header-main">
+                <div class="brand-group">
+                    <img src="assets/logo-globe-purple.png" class="header-logo-img" alt="LAWD Logo">
+                    <div class="brand">
+                        <span class="brand-badge">COPA 2026</span>
+                        <h2 class="brand-title">Copa LAWD</h2>
+                    </div>
+                </div>
+                
+                <div class="user-badge" id="user-badge-trigger">
+                    <div class="user-avatar" id="header-avatar">GS</div>
+                    <div class="user-info">
+                        <span class="user-name-display" id="user-name-display">Gyovani Santos</span>
+                        <span class="user-role-display">Colecionador(a)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STATS BAR -->
+            <div class="stats-bar">
+                <div class="stat-box">
+                    <div class="stat-label">Progresso</div>
+                    <div class="stat-value-group">
+                        <span class="stat-number" id="stats-progress-text">0/33</span>
+                        <span class="stat-percentage" id="stats-progress-percent">0%</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="stats-progress-bar" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-box timer-box">
+                    <div class="stat-label">Próximo Pacote</div>
+                    <div class="pack-status-indicator" id="pack-status-text">Liberando...</div>
+                    <div class="countdown" id="countdown-timer">00:00:00</div>
+                </div>
+            </div>
+
+            <!-- TABS NAVIGATION -->
+            <nav class="nav-tabs">
+                <button class="tab-btn active" data-tab="packs" id="tab-packs-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                    <span>Abrir Pacote</span>
+                </button>
+                <button class="tab-btn" data-tab="album">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                    <span>Álbum</span>
+                </button>
+                <button class="tab-btn" data-tab="config">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    <span>Configurações</span>
+                </button>
+            </nav>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main class="app-body">
+            
+            <!-- SECTION: ALBUM -->
+            <section id="tab-album" class="tab-pane active">
+                <!-- Group Filters -->
+                <div class="category-filters">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="diretoria">Diretoria</button>
+                    <button class="filter-btn" data-filter="membros">Membros</button>
+                    <button class="filter-btn" data-filter="eventos">Eventos</button>
+                    <button class="filter-btn" data-filter="lugares">Lugares</button>
+                    <button class="filter-btn" data-filter="unlocked">Desbloqueadas</button>
+                    <button class="filter-btn" data-filter="locked">Bloqueadas</button>
+                </div>
+
+                <div class="album-grid" id="album-grid">
+                    <!-- Cards will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <!-- SECTION: PACKS -->
+            <section id="tab-packs" class="tab-pane">
+                <div class="packs-container">
+                    <div class="pack-claim-view" id="pack-claim-view">
+                        <div class="pack-wrapper-3d" id="pack-wrapper-3d">
+                            <!-- Gorgeous pack mock split for tearing -->
+                            <div class="booster-pack" id="booster-pack">
+                                <div class="pack-shine"></div>
+                                
+                                <!-- Top Foil Part (will tear away) -->
+                                <div class="pack-foil-top">
+                                    <div class="pack-foil-top-design">
+                                        <div class="pack-logo">LAWD</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Drag/Tear Line Indicator -->
+                                <div class="pack-tear-line-container" id="tear-line-container">
+                                    <div class="pack-tear-line"></div>
+                                    <div class="pack-tear-handle" id="pack-tear-handle">🫳</div>
+                                </div>
+
+                                <!-- Bottom Foil Part -->
+                                <div class="pack-foil-bottom">
+                                    <div class="pack-foil-bottom-design">
+                                        <div class="pack-title">COPA 2026</div>
+                                        <div class="pack-badge">5 FIGURINHAS</div>
+                                        <div class="pack-footer" id="pack-drag-instruction">ARRASTE A MÃO PARA ABRIR</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pack-claim-actions">
+                            <!-- Hidden backup button for compatibility -->
+                            <button id="btn-open-pack" class="hidden"></button>
+                            <p class="pack-info-text" id="pack-timer-desc">Um pacote liberado todo dia às 12:00h.</p>
+                        </div>
+                    </div>
+
+                    <!-- REVEAL VIEW -->
+                    <div class="pack-reveal-view hidden" id="pack-reveal-view">
+                        <h3 class="reveal-title">Você tirou 5 figurinhas!</h3>
+                        <div class="cards-reveal-grid" id="cards-reveal-grid">
+                            <!-- 5 Cards will render here face down -->
+                        </div>
+                        <div class="reveal-actions hidden" id="reveal-actions">
+                            <button class="btn btn-primary" id="btn-collect-all">Guardar no Álbum</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: CONFIG / METRICS -->
+            <section id="tab-config" class="tab-pane">
+                <div class="config-container">
+                    <div class="config-card">
+                        <h3>📋 Minha Coleção</h3>
+                        <p>Gerencie suas figurinhas, faça backup ou restaure seus dados.</p>
+                        
+                        <div class="config-actions">
+                            <button class="btn btn-secondary" id="btn-export-json">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                                <span>Exportar Coleção (.JSON)</span>
+                            </button>
+                            
+                            <label class="btn btn-secondary cursor-pointer" id="btn-import-label">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                <span>Importar Coleção (.JSON)</span>
+                                <input type="file" id="import-json-input" accept=".json" class="hidden">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="config-card">
+                        <h3>👤 Editar Perfil</h3>
+                        <form id="edit-profile-form">
+                            <div class="input-group">
+                                <label for="edit-user-name">Seus dois primeiros nomes</label>
+                                <input type="text" id="edit-user-name" required autocomplete="off">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                        </form>
+                    </div>
+
+                    <div class="config-card danger-zone">
+                        <h3>⚠️ Zona de Perigo</h3>
+                        <p>Isso apagará permanentemente todo o seu progresso no local storage. Você não poderá recuperar suas figurinhas a menos que tenha feito o download do JSON.</p>
+                        <button class="btn btn-danger" id="btn-reset-album">Reiniciar Meu Álbum</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- DETAIL MODAL FOR STICKERS -->
+    <div id="card-modal" class="modal-overlay">
+        <div class="modal-content card-detail-modal">
+            <button class="modal-close" id="btn-close-modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            
+            <div class="card-detail-layout" id="card-detail-layout">
+                <!-- Loaded dynamically on card click -->
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="membros_data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
