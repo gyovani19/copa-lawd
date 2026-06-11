@@ -92,8 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Remove direct click pack opening, trigger hint on click instead
         boosterPack.addEventListener('click', () => {
-            const { lastRelease } = getDailyReleaseThresholds();
-            const isPackAvailable = !lastOpenedPackTime || (lastOpenedPackTime < lastRelease.getTime());
+            const activeCheckpoints = getReleaseCheckpoints();
+            const unclaimed = activeCheckpoints.filter(cp => !claimedCheckpoints.includes(cp.id));
+            const isPackAvailable = unclaimed.length > 0;
             if (isPackAvailable) {
                 boosterPack.classList.add('shaking');
                 setTimeout(() => boosterPack.classList.remove('shaking'), 500);
@@ -124,8 +125,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Drag / Swipe handlers
     function startDrag(e) {
-        const { lastRelease } = getDailyReleaseThresholds();
-        const isPackAvailable = !lastOpenedPackTime || (lastOpenedPackTime < lastRelease.getTime());
+        const activeCheckpoints = getReleaseCheckpoints();
+        const unclaimed = activeCheckpoints.filter(cp => !claimedCheckpoints.includes(cp.id));
+        const isPackAvailable = unclaimed.length > 0;
         if (!isPackAvailable) return;
         
         isDragging = true;
