@@ -16,7 +16,7 @@ const MEMBROS = [
     "areasOfActivity": "Eventos",
     "interests": "Desenvolvimento web, Redes",
     "projects": "WebGarden (https://app.notion.com/p/WebGarden-250412c2ca314f0d8e12fd4defd57726?pvs=21), FORPROEX (https://app.notion.com/p/FORPROEX-2799c7d7a0e94718bd2f1ec2bd2a5c98?pvs=21), Pseudo-Holograma (https://app.notion.com/p/Pseudo-Holograma-0ab1763dbcbc467d9cc5fa13910cb1e8?pvs=21)",
-    "image": "Membros/Gyovani Santos/Gyovani.jpeg",
+    "image": "Membros/Gyovani Santos/Gyovani-Santos.jpeg",
     "isRectangular": false
   },
   {
@@ -102,22 +102,6 @@ const MEMBROS = [
   {
     "id": 6,
     "category": "membro",
-    "name": "Alipio Fernando",
-    "fullName": "Alipio Fenando de Paula Pires",
-    "email": "alipiofernandopires@gmail.com",
-    "phone": "79996768917",
-    "birthday": "September 17, 2025",
-    "status": "membro efetivo",
-    "techs": [],
-    "areasOfActivity": "",
-    "interests": "Design, Eventos",
-    "projects": "Untitled (https://app.notion.com/p/c0f5fc1ef7344bb5807570dd785c2e27?pvs=21), WebGarden (https://app.notion.com/p/WebGarden-250412c2ca314f0d8e12fd4defd57726?pvs=21), FORPROEX (https://app.notion.com/p/FORPROEX-2799c7d7a0e94718bd2f1ec2bd2a5c98?pvs=21), Chatbot do Processo Seletivo (https://app.notion.com/p/Chatbot-do-Processo-Seletivo-5a7b5a7d29ba4d54a68cd27026230d6a?pvs=21)",
-    "image": "Membros/Alipio Fernando/Untitled.jpeg",
-    "isRectangular": false
-  },
-  {
-    "id": 7,
-    "category": "membro",
     "name": "Guilherme Viana",
     "fullName": "Guilherme Lavrador Viana",
     "email": "guilavrador@gmail.com",
@@ -142,7 +126,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 8,
+    "id": 7,
     "category": "membro",
     "name": "Pedro Lucas",
     "fullName": "Pedro Lucas Souza de Novaes",
@@ -169,7 +153,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 9,
+    "id": 8,
     "category": "membro",
     "name": "Wesley Góis",
     "fullName": "Wesley Kauanderlon de Carvalho Góis",
@@ -191,7 +175,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 10,
+    "id": 9,
     "category": "membro",
     "name": "Enzo Emanuel",
     "fullName": "Enzo Emanuel Maia Costa",
@@ -211,7 +195,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 11,
+    "id": 10,
     "category": "membro",
     "name": "Dimitri Martins",
     "fullName": "Dimitri Martins Oliveira",
@@ -231,7 +215,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 12,
+    "id": 11,
     "category": "membro",
     "name": "Bruno Saint Clair",
     "fullName": "Bruno Saint Clair",
@@ -251,7 +235,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 13,
+    "id": 12,
     "category": "membro",
     "name": "Breno Gustavo",
     "fullName": "Breno Gustavo dos Reis Santos",
@@ -271,7 +255,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 14,
+    "id": 13,
     "category": "membro",
     "name": "André Felipe",
     "fullName": "André Felipe de Santana Conceição",
@@ -292,7 +276,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 15,
+    "id": 14,
     "category": "membro",
     "name": "Pedro Corrêa",
     "fullName": "Pedro Corrêa Castello Branco",
@@ -312,7 +296,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 16,
+    "id": 15,
     "category": "membro",
     "name": "Paulo Marques",
     "fullName": "Paulo Marques de Oliveira Silva",
@@ -332,7 +316,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 17,
+    "id": 16,
     "category": "membro",
     "name": "Luan Meireles",
     "fullName": "Luan Meireles Pinheiro Guimarães",
@@ -356,7 +340,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 18,
+    "id": 17,
     "category": "membro",
     "name": "Irlan Alves",
     "fullName": "Irlan Felipe Alves dos Santos",
@@ -379,7 +363,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 19,
+    "id": 18,
     "category": "membro",
     "name": "Lauane Morais",
     "fullName": "Lauane de Morais Araujo",
@@ -393,11 +377,11 @@ const MEMBROS = [
     "areasOfActivity": "CORP",
     "interests": "Eventos, Mini-cursos",
     "projects": "",
-    "image": "Membros/Lauane Morais/LauaneMorais.jpg",
+    "image": "Membros/Lauane Morais/lauane.jpeg",
     "isRectangular": false
   },
   {
-    "id": 20,
+    "id": 19,
     "category": "membro",
     "name": "Gustavo Aragão",
     "fullName": "Gustavo Henrique Aragão Silva",
@@ -422,7 +406,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 21,
+    "id": 20,
     "category": "membro",
     "name": "Erick Juan",
     "fullName": "Erick Juan Gois Oliveira",
@@ -442,7 +426,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 22,
+    "id": 21,
     "category": "membro",
     "name": "Gabriel Argôlo",
     "fullName": "Gabriel Argôlo Julião dos Santos",
@@ -463,7 +447,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 23,
+    "id": 22,
     "category": "membro",
     "name": "Giulian Bastos",
     "fullName": "Giulian Fábio Bastos Amorim Lima",
@@ -485,7 +469,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 24,
+    "id": 23,
     "category": "membro",
     "name": "Thayla Figueiredo",
     "fullName": "Thayla Almeida Figueiredo",
@@ -504,7 +488,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 25,
+    "id": 24,
     "category": "membro",
     "name": "Daniel Trindade",
     "fullName": "Daniel José Silva Trindade",
@@ -525,7 +509,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 26,
+    "id": 25,
     "category": "membro",
     "name": "Vinícius Morais",
     "fullName": "Vinícius Morais Souza",
@@ -543,7 +527,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 27,
+    "id": 26,
     "category": "membro",
     "name": "Gabriel Almeida",
     "fullName": "Gabriel dos Santos Almeida",
@@ -563,7 +547,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 28,
+    "id": 27,
     "category": "membro",
     "name": "Guilherme Linard",
     "fullName": "Guilherme Linard Pereira",
@@ -582,7 +566,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 29,
+    "id": 28,
     "category": "membro",
     "name": "Davi Bittencourt",
     "fullName": "Davi Bittencourt de Almeida",
@@ -609,7 +593,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 30,
+    "id": 29,
     "category": "membro",
     "name": "Álvaro Luís",
     "fullName": "Álvaro Luis Silva Peixoto",
@@ -629,7 +613,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 31,
+    "id": 30,
     "category": "membro",
     "name": "Isadora Oliveira",
     "fullName": "Isadora Oliveira Santos",
@@ -651,7 +635,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 32,
+    "id": 31,
     "category": "membro",
     "name": "Irwing Felipe",
     "fullName": "Irwing Felipe Pereira Vieira",
@@ -671,7 +655,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 33,
+    "id": 32,
     "category": "membro",
     "name": "Levi Ribeiro",
     "fullName": "Levi Ribeiro Santiago de Mendonça",
@@ -691,7 +675,7 @@ const MEMBROS = [
     "isRectangular": false
   },
   {
-    "id": 34,
+    "id": 33,
     "category": "evento",
     "name": "Aprovados Ps 2024",
     "fullName": "Aprovados Ps 2024",
@@ -707,7 +691,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 35,
+    "id": 34,
     "category": "evento",
     "name": "Expo Comp",
     "fullName": "Expo Comp",
@@ -723,7 +707,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 36,
+    "id": 35,
     "category": "evento",
     "name": "Fusao Vice Presida",
     "fullName": "Fusao Vice Presida",
@@ -739,7 +723,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 37,
+    "id": 36,
     "category": "evento",
     "name": "LAWD 2 Anos",
     "fullName": "LAWD 2 Anos",
@@ -755,7 +739,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 38,
+    "id": 37,
     "category": "evento",
     "name": "LAWD Campus Party",
     "fullName": "LAWD Campus Party",
@@ -771,7 +755,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 39,
+    "id": 38,
     "category": "evento",
     "name": "LAWD Hackaia",
     "fullName": "LAWD Hackaia",
@@ -787,7 +771,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 40,
+    "id": 39,
     "category": "evento",
     "name": "LAWD Semac X",
     "fullName": "LAWD Semac X",
@@ -803,7 +787,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 41,
+    "id": 40,
     "category": "evento",
     "name": "LAWD Semac XI",
     "fullName": "LAWD Semac XI",
@@ -819,7 +803,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 42,
+    "id": 41,
     "category": "evento",
     "name": "Niver Ano 1",
     "fullName": "Niver Ano 1",
@@ -835,7 +819,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 43,
+    "id": 42,
     "category": "evento",
     "name": "Primeira Reuniao Geral",
     "fullName": "Primeira Reuniao Geral",
@@ -851,7 +835,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 44,
+    "id": 43,
     "category": "evento",
     "name": "Root Para LAWD",
     "fullName": "Root Para LAWD",
@@ -867,7 +851,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 45,
+    "id": 44,
     "category": "evento",
     "name": "Sim Grade 1.0",
     "fullName": "Sim Grade 1.0",
@@ -883,7 +867,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 46,
+    "id": 45,
     "category": "lugar",
     "name": "Confra Espetinho Do Ze",
     "fullName": "Confra Espetinho Do Ze",
@@ -899,7 +883,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 47,
+    "id": 46,
     "category": "lugar",
     "name": "Jardim Novos Membros",
     "fullName": "Jardim Novos Membros",
@@ -915,7 +899,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 48,
+    "id": 47,
     "category": "lugar",
     "name": "LAWD CCET Fundacao",
     "fullName": "LAWD CCET Fundacao",
@@ -931,7 +915,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 49,
+    "id": 48,
     "category": "lugar",
     "name": "LAWD Floyd",
     "fullName": "LAWD Floyd",
@@ -947,7 +931,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 50,
+    "id": 49,
     "category": "lugar",
     "name": "LAWD MPSE",
     "fullName": "LAWD MPSE",
@@ -963,7 +947,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 51,
+    "id": 50,
     "category": "lugar",
     "name": "LAWD Sti",
     "fullName": "LAWD Sti",
@@ -979,7 +963,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 52,
+    "id": 51,
     "category": "lugar",
     "name": "LAWD UFS BR",
     "fullName": "LAWD UFS BR",
@@ -995,7 +979,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 53,
+    "id": 52,
     "category": "lugar",
     "name": "Sala CCET",
     "fullName": "Sala CCET",
@@ -1011,7 +995,7 @@ const MEMBROS = [
     "isRectangular": true
   },
   {
-    "id": 54,
+    "id": 53,
     "category": "lugar",
     "name": "Web Lab",
     "fullName": "Web Lab",
